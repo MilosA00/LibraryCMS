@@ -1,12 +1,16 @@
 package com.example.LibraryCMS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Author")
+@Table(name = "author_table")
 public class Author {
 
     @Id
@@ -32,8 +36,14 @@ public class Author {
     private String email;
     @Column(name = "pictureUrl")
     private String profilePictureUrl;
-    @ManyToMany
-    private Set<Book> books;
+    // Inverse side of the many-to-many relationship
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("authors")
+    private Set<Book> books = new HashSet<>();
+
+
+    public Author() {
+    }
 
     public Author(String firstName, String lastName, LocalDate dateOfBirth, String biography, String email, String profilePictureUrl) {
         this.firstName = firstName;
@@ -42,6 +52,10 @@ public class Author {
         this.biography = biography;
         this.email = email;
         this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -91,4 +105,8 @@ public class Author {
     public void setProfilePictureUrl(String profilePictureUrl) {
         this.profilePictureUrl = profilePictureUrl;
     }
+
+    public Set<Book> getBooks() {return books;}
+
+    public void setBooks(Set<Book> books) {this.books = books;}
 }
