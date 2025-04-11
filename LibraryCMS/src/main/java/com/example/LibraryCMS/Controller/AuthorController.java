@@ -24,12 +24,6 @@ public class AuthorController {
 
 
 
-
-    @RequestMapping("")
-    public String placeholder(){
-        return "home.html";
-    }
-
     @ResponseBody
     @GetMapping("/get_all")
     public List<Author> authorList(){
