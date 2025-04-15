@@ -1,0 +1,36 @@
+:root {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  --color-background: #1E1E2F;
+  --color-sidebar: #3A3A5B;
+  --color-accent: #4F8BFF;
+  --color-text: #FFFFFF;
+  --color-text-muted: #A0A0B5;
+  --color-search-bg: #2C2C40;
+  --color-search-placeholder: #707090;
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+.bg-sidebar {
+  background-color: var(--color-sidebar);
+}
+.bg-searchBg {
+  background-color: var(--color-search-bg);
+}
+.text-text {
+  color: var(--color-text);
+}
+.text-textMuted {
+  color: var(--color-text-muted);
+}
+.text-searchPlaceholder::placeholder {
+  color: var(--color-search-placeholder);
+}
+.hover\:text-accent:hover {
+  color: var(--color-accent);
+}
+.hover\:ring-accent:hover {
+  --tw-ring-color: var(--color-accent);
+}

@@ -10,7 +10,7 @@ public class Controller {
 
 
     public String helloWorld(){
-        return "home.html";
+        return "index.html";
     }
 
 
